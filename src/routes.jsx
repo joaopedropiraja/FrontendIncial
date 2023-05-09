@@ -5,13 +5,16 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Cadastro, Home } from "./pages";
+import { AppLayout } from "./layouts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="cadastro" element={<Cadastro />} />
+      <Route path="/" element={<AppLayout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+      </Route>
     </Route>
   )
 );

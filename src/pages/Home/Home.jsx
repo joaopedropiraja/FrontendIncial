@@ -1,3 +1,9 @@
+import { Container } from "./Styles";
+
 export default function Home() {
-  return <h1>HOME</h1>;
+  return (
+    <Container>
+      <h1>HOME</h1>
+    </Container>
+  );
 }

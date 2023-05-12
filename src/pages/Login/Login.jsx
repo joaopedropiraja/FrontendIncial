@@ -1,14 +1,33 @@
 import { useState } from "react";
 import { Container, Form, Campo, Label, Input, Button } from "./Styles";
+import api from "../../services/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [carregando, setCarregando] = useState(false);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
-    console.log({ email, senha });
+
+    try {
+      setCarregando(true);
+      const res = await api.post("/login", { email, senha });
+    } catch (erro) {
+      console.error(erro);
+      alert(erro.message);
+    } finally {
+      setCarregando(false);
+    }
   };
+
+  if (carregando)
+    return (
+      <Container>
+        <h1>Carregando...</h1>
+      </Container>
+    );
+
   return (
     <Container>
       <Form onSubmit={handleSumbit}>

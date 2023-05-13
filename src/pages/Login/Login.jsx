@@ -56,6 +56,7 @@ export default function Login() {
             name="senha"
             id="senha"
             required
+            value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
         </Campo>
